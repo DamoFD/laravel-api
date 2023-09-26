@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,10 @@ Route::middleware('auth:api')->prefix('v1')->group(function() {
     Route::get('/user', function(Request $request){
         return $request->user();
     });
+
+    Route::apiResource('/authors', AuthorController::class);
+    Route::apiResource('/books', BookController::class);
 });
 
-// Book belongs to an author
-// User that creates books
+//author/{author}
+//For one specific author
